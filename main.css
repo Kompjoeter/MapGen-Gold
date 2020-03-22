@@ -99,8 +99,12 @@ body
   }
 /*-----------------------------------------------*/
 
+/*Buttons*/
+/*-----------------------------------------------*/
 .button
 {
+    margin-top: 5px;
+    margin-bottom: 5px;
     padding: 5px;
 
     background-color: var(--color-text-main);
@@ -120,7 +124,21 @@ body
 
 }
 
-/*Slider*/
+.checkbox
+{
+  margin-top: 5px;
+}
+
+/*Radio Buttons*/
+/*-----------------------------------------------*/
+.radio-option
+{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+/*-----------------------------------------------*/
+
+/*Sliders*/
 /*-----------------------------------------------*/
 .slider 
 {
@@ -152,44 +170,32 @@ body
 }
 /*-----------------------------------------------*/
 
-.checkbox
-{
-  margin-top: 10px;
-}
-
-.radio-option
-{
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
+/*Textfields*/
+/*-----------------------------------------------*/
 .textfield
 {
-  background-color: var(--color-bg-input);
-  border: 1px var(--color-text-main) solid;
-  color: var(--color-text-main);
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 2px;
-}
 
-.cell-text-holder
+  background-color: var(--color-bg-input);
+  border: 1px var(--color-text-main) solid;
+  color: var(--color-text-main);}
+/*-----------------------------------------------*/
+
+.cell-data-holder
 {
     position: relative;
 }
 
-#cell-text
+#cell-data
 {
     padding: 10px;
     position: absolute;
     z-index: 1;
     border-radius: 5px;
     margin: 20px;
+    min-width: 200px;
     background-color: rgb(0,0,0,20%);
     color: #DDD;
 }
-
-
-
-
-

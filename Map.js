@@ -29,6 +29,7 @@ class Map
 
         let frequency = noiseScale;
         let octaves = Math.log(mapWidth) / Math.log(2);
+        console.log(octaves);
         let value;
         
         noiseDetail(octaves,fallOff);
