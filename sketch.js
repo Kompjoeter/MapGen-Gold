@@ -23,6 +23,7 @@ colors = [];
 //UI Elements
 var slidersHeightRange = [];
 var textFieldsColor = [];
+var textFieldSeed;
 var sliderFallOff;
 var sliderNoiseScale;
 var buttonNewMap;
@@ -37,6 +38,8 @@ var prevHeightRanges = [];
 var heightRanges = [];
 var visualsType;
 var outline;
+
+var mapSeed = Math.floor(Math.random()*100000);
 
 //Toggles - Temps
 var allowDraw = true;
@@ -72,7 +75,8 @@ function setup()
     canvas.parent('sketch-holder');
 
     //Randomize Map Seed
-    noiseSeed(Math.floor(Math.random()*1000));
+    noiseSeed(mapSeed);
+
     
     //Create UI (Sliders/Checkbox/Buttons)
     UI.initialize();
@@ -118,7 +122,7 @@ function draw()
 function newMap()
 {
     //Randomize Map Seed
-    noiseSeed(Math.floor(Math.random()*1000));
+    noiseSeed(textFieldSeed.value());
     mapLoaded = new Map(mapWidth,mapHeight);
     Navigator.initialize();
     allowDraw = true;

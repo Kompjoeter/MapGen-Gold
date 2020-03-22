@@ -30,6 +30,18 @@ var UI =
         checkBoxGradient.element.parent(myDiv);
         gradient = checkBoxGradient.element.value();
 
+   
+
+        myDiv = createElement('p','Seed: ');
+        myDiv.parent('menu-map-holder');
+
+        textFieldSeed = createInput(mapSeed);
+        textFieldSeed.class('textfield');
+        myDiv = createDiv();
+        myDiv.id('seed');
+        myDiv.parent('menu-map-holder');
+        textFieldSeed.parent(myDiv);
+
         //-----Button for New Map Generation - Link to HTML - and set Variables
         buttonNewMap = {element:createButton('New Map')};
         buttonNewMap.element.class('button');
@@ -37,6 +49,7 @@ var UI =
         myDiv.id('button-new-map');
         myDiv.parent('menu-map-holder');
         buttonNewMap.element.parent(myDiv);
+
 
         //-----Create Radio Button to Switch between Visual Representation of Map - and set Variables
         for(let i = 0; i < 4; i ++)
