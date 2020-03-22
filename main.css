@@ -183,18 +183,19 @@ body
   color: var(--color-text-main);}
 /*-----------------------------------------------*/
 
-.cell-text-holder
+.cell-data-holder
 {
     position: relative;
 }
 
-#cell-text
+#cell-data
 {
     padding: 10px;
     position: absolute;
     z-index: 1;
     border-radius: 5px;
     margin: 20px;
+    min-width: 200px;
     background-color: rgb(0,0,0,20%);
     color: #DDD;
 }

@@ -28,6 +28,7 @@ var sliderFallOff;
 var sliderNoiseScale;
 var buttonNewMap;
 var radioVisuals = [];
+var cellDataBox;
 
 //-----UI Element Values
 var fallOff;
@@ -50,12 +51,12 @@ function preload()
     //Pre-Load Sprite Images
     sprites[0] = {image: loadImage('images/water.png'), name: "Deep Water"};
     sprites[1] = {image: loadImage('images/water-shallow.png'), name: "Shallow Water"};
-    sprites[2] = {image: loadImage('images/sand.png'), name: "Sand"};
+    sprites[2] = {image: loadImage('images/sand.png'), name: "Beach/Sand"};
     sprites[3] = {image: loadImage('images/grass-light.png'), name: "Short Grass"};
-    sprites[4] = {image: loadImage('images/grass-medium.png'), name: "Tall Grass"};
-    sprites[5] = {image: loadImage('images/grass-heavy.png'), name: "Thick Grass"};
+    sprites[4] = {image: loadImage('images/grass-medium.png'), name: "Medium Grass"};
+    sprites[5] = {image: loadImage('images/grass-heavy.png'), name: "Tall Grass"};
     sprites[6] = {image: loadImage('images/mountain.png'), name: "Mountains"};
-    sprites[7] = {image: loadImage('images/mountain-snow.png'), name: "Snowy Mountains"};
+    sprites[7] = {image: loadImage('images/mountain-snow.png'), name: "Tall Mountains"};
 
     //Pre-Set Colors for Drawn Shapes
     colors[0] = '#4b5bab';
