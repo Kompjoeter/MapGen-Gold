@@ -46,7 +46,7 @@ Priority
 - Improved Drawing. (I have some efficiency issues which can probably be fixed)
 
 Semi-Priority
-- Responsive to different devices/screen types.
+- Responsive to different devices/screen types + Touch Screen Navigation.
 - Biomes (Different climates across the Map. Possibly with UI Manipulation)
 
 Bonus
