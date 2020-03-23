@@ -74,7 +74,6 @@ var Navigator =
             if (timeDiff >= 240)
             {
                 storedTime = new Date();
-                console.log(move[0]);
                 this.navigate(move);
             }
             else

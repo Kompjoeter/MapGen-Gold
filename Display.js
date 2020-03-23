@@ -16,8 +16,6 @@ var Display =
                 this.drawVisuals(x,y);
             }
         }
-
-        this.cellData();
     },
     getVisuals: function(x, y)
     {
@@ -81,13 +79,4 @@ var Display =
             }
         }
     },
-    cellData: function()
-    {
-        let title = "Selected Cell Data<br><br>";
-        let posX = "Pos X: "+String(Navigator.posCell[0])+"<br>";
-        let posY =  "Pos Y: "+String(Navigator.posCell[1])+"<br>";
-        let visualsIndex = this.getVisuals(Navigator.posCell[0],Navigator.posCell[1]);
-        let tile = "Tile: "+String(sprites[visualsIndex].name);
-        cellDataBox.innerHTML = title+posX+posY+tile
-    }
 }
