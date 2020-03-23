@@ -125,7 +125,6 @@ var UI =
         {
             if (radioVisuals[i].checked == true)
             {
-                console.log("Listen");
                 prevVisualsType = visualsType;
                 visualsType = radioVisuals[i].value;
                 if (prevVisualsType != visualsType)
@@ -135,7 +134,6 @@ var UI =
             }
         }
         
-    
         //Store Latest and Update Current UI Values for Height Distribution - and compare for Changes
         for(i = 1; i < sprites.length; i++)
         {

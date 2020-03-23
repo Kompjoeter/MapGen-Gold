@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map-Gen Gold</title>
+    <title>Map-Gen-Gold</title>
 
     <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="main.css">
@@ -17,77 +17,83 @@
     
 </head>
 <body>
+
   <div id="sketch-holder">
-
-    <div class="navbar">          
+  
+  <div class="navbar">          
             
+    <div class="dropdown">
+      <button class="dropbtn">Map</button>
+      <div class="dropdown-content">
+          <div class="sub-menu" id="menu-map-holder">
+          </div>
+        </div>
+      </div>
+
       <div class="dropdown">
-        <button class="dropbtn">Map</button>
+        <button class="dropbtn">Noise</button>
         <div class="dropdown-content">
-            <div class="sub-menu" id="menu-map-holder">
-            </div>
+          <div class="sub-menu" id='menu-noise-holder'></div>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="dropbtn">Heights</button>
+        <div class="dropdown-content">
+            <div class="card" id='input-height-range-holder'></div>
           </div>
         </div>
 
-        <div class="dropdown">
-          <button class="dropbtn">Noise</button>
-          <div class="dropdown-content">
-            <div class="sub-menu" id='menu-noise-holder'></div>
-          </div>
-        </div>
-        
-        <div class="dropdown">
-          <button class="dropbtn">Heights</button>
-          <div class="dropdown-content">
-              <div class="card" id='input-height-range-holder'></div>
-            </div>
-          </div>
-
-        <div class="dropdown">
-          <button class="dropbtn">Visuals</button>
-          <div class="dropdown-content">
-            <div class="card" id="menu-visuals-holder">
-              
-            <div class="radio-option">
-              <label>
-                <input type="radio" name="choice" value="Sprites" id="radio-visuals-type-0" /> Sprites
-              </label>
-            </div>
+      <div class="dropdown">
+        <button class="dropbtn">Visuals</button>
+        <div class="dropdown-content">
+          <div class="card" id="menu-visuals-holder">
             
-            <div class="radio-option">
-              <label>
-                <input type="radio" name="choice" value="Circles" id="radio-visuals-type-1"/> Circles
-              </label>
-            </div>
+          <div class="radio-option">
+            <label>
+              <input type="radio" name="choice" value="Sprites" id="radio-visuals-type-0" /> Sprites
+            </label>
+          </div>
+          
+          <div class="radio-option">
+            <label>
+              <input type="radio" name="choice" value="Circles" id="radio-visuals-type-1"/> Circles
+            </label>
+          </div>
 
-            <div class="radio-option">
-              <label>
-                  <input type="radio" name="choice" value="Squares" id="radio-visuals-type-2"/> Squares
-              </label>
-            </div>
+          <div class="radio-option">
+            <label>
+                <input type="radio" name="choice" value="Squares" id="radio-visuals-type-2"/> Squares
+            </label>
+          </div>
 
-            <div class="radio-option">
-              <label>
-                  <input type="radio" name="choice" value="Triangles" id="radio-visuals-type-3"/> Triangles
-              </label>
-            </div>
-            </div>
+          <div class="radio-option">
+            <label>
+                <input type="radio" name="choice" value="Triangles" id="radio-visuals-type-3"/> Triangles
+            </label>
+          </div>
           </div>
         </div>
-
-        <div class="dropdown">
-          <button class="dropbtn">Colors</button>
-          <div class="dropdown-content">
-            <div class="card" id='input-visuals-color-holder'></div>
-          </div>
-        </div>  
       </div>
 
-      <div id="cell-data-holder">
-        <p id="cell-data">
-        </p>
-      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Colors</button>
+        <div class="dropdown-content">
+          <div class="card" id='input-visuals-color-holder'></div>
+        </div>
+      </div>  
+    </div>
 
+    <div id="cell-data-holder">
+      <p id="cell-data">
+      </p>
+    </div>
+  </div>
+
+
+
+
+  
     </div>
 </body>
 </html>

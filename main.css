@@ -25,16 +25,29 @@ body
 }
 
 #sketch-holder
-{
+{ 
     display: grid;
+    position: relative;
     justify-content: center;
     margin-top: 10px;
+}
+
+canvas
+{
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.canvas-two
+{
+  z-index: 4;
 }
 
 /*Menu*/
 /*-----------------------------------------------*/
 /* Navbar container */
 .navbar {
+    grid-row: 1;
     overflow: hidden;
     background-color: var(--color-bg-input);
   }
@@ -80,7 +93,7 @@ body
     background-color: var(--color-bg-card);
     padding: 10px;
     /*minWidth 160*/
-    z-index: 2;
+    z-index: 5;
   }
   
   /* Links inside the dropdown */
@@ -185,6 +198,7 @@ body
 
 .cell-data-holder
 {
+    grid-row: 1;
     position: relative;
 }
 
