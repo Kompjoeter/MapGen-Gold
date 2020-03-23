@@ -1,5 +1,14 @@
-# MapGen-Gold-WIP
-As MapGen Silver but Redesigning UI
+# Map-Gen Gold
+
+# Description
+
+# Table of Contents
+
+# Installation
+
+# Usage
+
+# Contribution
 
 # Credits
 This program was made by Joran de Boer AKA RanDByyp using the p5.js Library (https://p5js.org/) (which is not made by Joran).
