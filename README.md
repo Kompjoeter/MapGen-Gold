@@ -38,8 +38,23 @@ You can also check out my previous version https://github.com/RanDByyp/MapGen-Si
 - Use WASD to navigate the Map (This is tediously slow, and will definitely be improved upon).
 
 # Contribution
+As of now I'm not accepting any pull-requests. This is a passion project of mine I'd like to develop on my own. However, feel free to use the code to build your own map-generator. I'm very curious to see what other people make with this!
 
 # Future Feautures (No promises!)
+Priority
+- Improved Map Navigation (Cell Select by Mouse)
+- Improved Drawing. (I have some efficiency issues which can probably be fixed)
+
+Semi-Priority
+- Responsive to different devices/screen types.
+- Biomes (Different climates across the Map. Possibly with UI Manipulation)
+
+Bonus
+- River Generation
+- Town Generation
+- Tree/Flora Generation
+- Manual Adjusting of Map (Place your own individual towns/trees)
+- Height Brush (Increase or decrease heights by drawing on the canvas)
 
 # Credits
 This program was made by Joran de Boer AKA RanDByyp using the p5.js Library (https://p5js.org/) (which is not made by Joran).
