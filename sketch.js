@@ -169,6 +169,7 @@ var sketchOne = function( p ) { // p could be any variable name
         }
 
         let color = p.color(0,opacity);
+        p.noStroke();
         p.fill(color);
         p.rect(minX,minY,maxX,maxY,5,5,5,5);
  
