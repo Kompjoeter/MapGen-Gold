@@ -2,7 +2,23 @@
 
 # Description
 
+An in-browser 2D Map Generator built with HTML, CSS, Javascript and the p5.js library. The Maps are generated using Perlin Noise and have a variety of sliders/buttons to alter the way it generates and a few options to choose from regarding the way it draws the Map onto the canvas.
+
+This project is still a work-in-progress and will probably be so for some time. I have a lot of ideas for functionality to add and generally I'm very excited and interested in procedural-generation/map-generation. Basically, I could work on this forever.
+
+You can also check out my previous version https://github.com/RanDByyp/MapGen-Silver or live at https://randbyyp.github.io/MapGen-Silver/. The previous version won't be updated anymore, but I want to keep it live for comparison with this version.
+
+# Future Feautures (No promises!)
+
 # Table of Contents
+
+- **index.html:** Sets up all relevant scripts and allows for the drawing of a canvas.
+- **main.css:** Styles the UI.
+- **sketch.js** Main operator. Initializes all variables and calls all functions to generate/update/draw/etc.
+- **Display** Handles drawing to the canvas, and makes sure the correct colors/sprites are drawn corresponding to their values.
+- **Navigator.js** Handles Map Navigation and allows you to be able to read out individual cell data.
+- **UI.js** Initializes the UI elements. Updates UI and compares for changes.
+- **Images** Stores all Sprites that are used to draw. (You can replace these with your own images, but make sure the naming, file-type and resolution (8x8) is the same!)
 
 # Installation
 
