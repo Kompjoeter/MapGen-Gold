@@ -40,7 +40,7 @@ You can also check out my previous version https://github.com/RanDByyp/MapGen-Si
 # Contribution
 As of now I'm not accepting any pull-requests. This is a passion project of mine I'd like to develop on my own. However, feel free to use the code to build your own map-generator. I'm very curious to see what other people make with this!
 
-# Future Feautures (No promises!)
+# Future Features (No promises!)
 Priority
 - Improved Map Navigation (Cell Select by Mouse)
 - Improved Drawing. (I have some efficiency issues which can probably be fixed)
