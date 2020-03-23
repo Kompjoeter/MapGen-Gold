@@ -26,14 +26,14 @@ You can also check out my previous version https://github.com/RanDByyp/MapGen-Si
 - Use the Menu to adjust the way the Map is generated.
   - **Map:** Enter a **Seed** to generate a new Map width by pressing **New Map**.
   - **Noise:** Adjust the **Overall Height** to change the height treshold. Adjust the **Scattering** to change how much the cells clump  together.
-  - **Heights** Adjust the sliders to change the range by which specific sprites are generated.
-  - **Visuals** Change the way the map is drawn to screen (**Sprites** or Shapes including (**Circles, Squares, Triangles**). Toggle **No Fill** to draw only outline or full shapes.
-  - **Colors** Adjust the colors of the drawn shapes for every height-range. 
-  Valid Inputs: 
-  - Hexcodes **#00FFDD** 
-  - HTML Color-Names **red** 
-  - RBG Values **rgb(255, 191, 0)** 
-  - HSL Values **hsl(180, 100%, 50%)**
+  - **Heights:** Adjust the sliders to change the range by which specific sprites are generated.
+  - **Visuals:** Change the way the map is drawn to screen (**Sprites** or Shapes including (**Circles, Squares, Triangles**). Toggle **No Fill** to draw only outline or full shapes.
+  - **Colors:** Adjust the colors of the drawn shapes for every height-range. 
+  - **Valid Inputs:**
+  -- Hexcodes **#00FFDD** 
+  -- HTML Color-Names **red** 
+  -- RBG Values **rgb(255, 191, 0)** 
+  -- HSL Values **hsl(180, 100%, 50%)**
   
 - Use WASD to navigate the Map (This is tediously slow, and will definitely be improved upon).
 
