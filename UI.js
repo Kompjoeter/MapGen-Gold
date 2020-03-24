@@ -120,7 +120,6 @@ var UI =
         }
 
         //Check Radio Button
- 
         for(let i = 0; i < 4; i++)
         {
             if (radioVisuals[i].checked == true)
@@ -139,8 +138,10 @@ var UI =
         {
             prevHeightRanges[i] = heightRanges[i];
             heightRanges[i] = slidersHeightRange[i].element.value();
+
             if (prevHeightRanges[i] != heightRanges[i])
             {
+                this.adjustSliders(i);
                 updated = true;
             }
         }
@@ -158,27 +159,32 @@ var UI =
         return updated;
     },
 
-    adjustSliders: function()
+    adjustSliders: function(sliderIndex)
     {
+        let i = sliderIndex;
+
         //Compare Height Distribution Sliders and Adjust According to Neighbours Value if nessecary.    
-        for(i = 8; i > 1; i--)
+        if (prevHeightRanges[i] > heightRanges[i])
         {
             if (heightRanges[i] < heightRanges[i-1])
             {
-                if (prevHeightRanges[i] > heightRanges[i])
+                for(j = i; j > 1; j--)
                 {
-                    heightRanges[i-1] -= slidersHeightRange[i-1].step;
-                    slidersHeightRange[i-1].element.value(heightRanges[i-1]);
-                }
-                else if (prevHeightRanges[i-1] < heightRanges[i-1])
-                {
-                    if (heightRanges[i-1] > heightRanges[i])
-                    {
-                        heightRanges[i] += slidersHeightRange[i].step;
-                        slidersHeightRange[i].element.value(heightRanges[i]);
-                    }
+                    heightRanges[j-1] = heightRanges[j];
+                    slidersHeightRange[j-1].element.value(heightRanges[j-1]);
                 }
             }
         }
-    },
+        else if (prevHeightRanges[i] < heightRanges[i])
+        {
+            if (heightRanges[i] > heightRanges[i+1])
+            {
+                for(j = i; j < heightRanges.length-1; j++)
+                {
+                    heightRanges[j+1] = heightRanges[j];
+                    slidersHeightRange[j+1].element.value(heightRanges[j+1]);
+                }
+            }
+        }
+    }
 }

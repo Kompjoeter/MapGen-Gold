@@ -5,14 +5,12 @@ var Display =
         //Draw Background before Drawing Map
         background('#233343');
 
-        //Correct Slider Values
-        UI.adjustSliders();
-
         //Draw every cell of Loaded Map
         for(let y = Navigator.minBoundsCurrent[1]; y < Navigator.maxBoundsCurrent[1]; y++)
         {
             for(let x = Navigator.minBoundsCurrent[0]; x < Navigator.maxBoundsCurrent[0]; x++)
             {
+                //UI.adjustSliders();
                 this.drawVisuals(x,y);
             }
         }
