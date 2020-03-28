@@ -30,9 +30,9 @@ var UI =
         checkBoxGradient.element.parent(myDiv);
         gradient = checkBoxGradient.element.value();
 
+        //-----Textfield to Type Noise Generation Seed - Link to HTML - and set Variables
         myDiv = createElement('p','Seed: ');
         myDiv.parent('menu-map-holder');
-
         textFieldSeed = createInput(mapSeed);
         textFieldSeed.class('textfield');
         myDiv = createDiv();
@@ -60,6 +60,7 @@ var UI =
         radioVisuals[0].checked = true;
         visualsType = radioVisuals[0].value;
 
+        //-----Checkbox to Toggle Shape Outlines - Link to HTML - and set Variables
         checkBoxOutline = {element:createCheckbox(' No Fill',true)};
         checkBoxOutline.element.class('checkbox');
         myDiv = createDiv();
@@ -81,6 +82,7 @@ var UI =
             heightRanges[i] = slidersHeightRange[i].element.value();
         }
 
+        //-----Create 8 Textfields for Shape Colors - Linkt to HTML - and set Variables
         for(i = 0; i < 8; i++)
         {
             textFieldsColor[i] = {element:createInput(colors[i])};
@@ -90,9 +92,6 @@ var UI =
             myDiv.parent('input-visuals-color-holder');
             textFieldsColor[i].element.parent(myDiv);
         }
-
-        cellDataBox = document.getElementById('cell-data');
-
     },
 
     update: function()
@@ -106,7 +105,7 @@ var UI =
         let prevVisualsType = visualsType; 
         let prevOutline = outline;
 
-    //Update Current UI Values
+        //Update Current UI Values
         fallOff = sliderFallOff.element.value();
         noiseScale = sliderNoiseScale.element.value();
         gradient = checkBoxGradient.element.checked();
@@ -156,6 +155,7 @@ var UI =
                 updated = true;
             }
         }
+
         return updated;
     },
 
@@ -164,10 +164,13 @@ var UI =
         let i = sliderIndex;
 
         //Compare Height Distribution Sliders and Adjust According to Neighbours Value if nessecary.    
+        //-----If Slider Value has Decreased
         if (prevHeightRanges[i] > heightRanges[i])
         {
+            //If Current Slider is Lower than Neighbouring-Top-Slider
             if (heightRanges[i] < heightRanges[i-1])
             {
+                //Set all Neighbouring-Top-Slider to Value of Current Slider
                 for(j = i; j > 1; j--)
                 {
                     heightRanges[j-1] = heightRanges[j];
@@ -175,10 +178,13 @@ var UI =
                 }
             }
         }
+        //-----If Slider Value has Increased
         else if (prevHeightRanges[i] < heightRanges[i])
         {
+            //If Current Slider is Higher than Neighbouring-Bottom-Slider
             if (heightRanges[i] > heightRanges[i+1])
             {
+                //Set all Neighbouring-Bottom-Slider to Value of Current Slider
                 for(j = i; j < heightRanges.length-1; j++)
                 {
                     heightRanges[j+1] = heightRanges[j];

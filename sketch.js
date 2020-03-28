@@ -43,13 +43,16 @@ var heightRanges = [];
 var visualsType;
 var outline;
 
-var selectedFile;
+var selectedCellData;
 
 var mapSeed = Math.floor(Math.random()*100000);
 
 //Toggles - Temps
-var allowDraw = true;
+var allowMapDraw = true;
+var allowNavigatorDraw = true;
 var storedTime = new Date();
+
+var myp5;
 
 function preload()
 {
@@ -78,6 +81,8 @@ function preload()
 
 function setup() 
 {
+
+    myp5 = new p5(sketchOne, 'c1');
     //Create Canvas and Link it to HTML Element
     var canvas = createCanvas(canvasWidth,canvasHeight);
     canvas.parent('sketch-holder');
@@ -99,33 +104,33 @@ function setup()
 
 function draw()
 {
-    if (allowDraw) 
+    if (allowMapDraw) 
     {
         //Generate Map with Updated Variables       
         mapLoaded.update();
         
         //Draw Map to Canvas
         Display.show(mapLoaded);
-
-        //Draw Cursor/Cell-Selector
        
         //Reset Draw-Map Toggle
-        allowDraw = false;
+        allowMapDraw = false;
     }
 
-    //Check for Nagitation (WASD) Input
-    let handlingInput = Navigator.handleInput();
-    if (handlingInput)
-    {
-        let visualsIndex = Display.getVisuals(Navigator.posCell[0],Navigator.posCell[1]);
-        selectedFile = sprites[visualsIndex].name;
-    }
     //Check for UI Manipulation
     let updatingUI = UI.update();
+    let updatingNavigator = Navigator.update();
+
     //If Navigation Input or UI Manipulation is true, allow Redrawing of Map
     if (updatingUI)
     {
-        allowDraw = true;
+        allowMapDraw = true;
+    }
+
+    if (updatingNavigator)
+    {
+        allowNavigatorDraw = true;
+        let cellIndex = Display.getVisuals(Navigator.posSelector[0],Navigator.posSelector[1]);
+        selectedCellData = sprites[cellIndex].name;
     }
 }
 
@@ -135,7 +140,7 @@ function newMap()
     noiseSeed(textFieldSeed.value());
     mapLoaded = new Map(mapWidth,mapHeight);
     Navigator.initialize();
-    allowDraw = true;
+    allowMapDraw = true;
 }
 
 // Sketch One
@@ -148,42 +153,48 @@ var sketchOne = function( p ) { // p could be any variable name
     };
   
     p.draw = function() {
-        p.clear();
-        p.stroke(255);
-        p.strokeWeight(1);
-        p.noFill();
-        p.square(Navigator.posCursor[0]*8,Navigator.posCursor[1]*8,8);
-
-         //Text Box
-        let minX = 16;
-        let minY = 16;
-        let maxX = 152;
-        let maxY = 80;
-        let xX = Navigator.posCell[0];
-        let yY = Navigator.posCell[1];
-        let opacity = 50;
-
-        if (xX*8 >= minX && xX*8 <= maxX+8 && yY*8 >= minY && yY*8 <= maxY+8)
+        console.log(allowNavigatorDraw);
+        if (allowNavigatorDraw)
         {
-            opacity = 25;
+            p.clear();
+            p.stroke(255);
+            p.strokeWeight(1);
+            p.noFill();
+
+            let xMouse = Navigator.posSelector[0];
+            let yMouse = Navigator.posSelector[1];
+
+            p.square(xMouse*8,yMouse*8,8);
+
+            //Text Box
+            let minX = 16;
+            let minY = 16;
+            let maxX = 152;
+            let maxY = 80;
+            let opacity = 50;
+
+            if (xMouse*8 >= minX && xMouse*8 <= maxX+8 && yMouse*8 >= minY && yMouse*8 <= maxY+8)
+            {
+                opacity = 25;
+            }
+
+            let color = p.color(0,opacity);
+            p.fill(color);
+            p.noStroke();
+            p.rect(minX,minY,maxX,maxY,5,5,5,5);
+    
+            //Text
+            p.fill(255);
+            p.textStyle(NORMAL);
+            p.textFont(myFont);
+
+            p.text("Selected Cell Data",24,32)
+            p.text('Pos X: '+String(xMouse),24,56);
+            p.text('Pos Y: '+String(yMouse),24,72);
+
+            let tile = "Tile: "+selectedCellData;
+            p.text(tile,24,88);
+            allowNavigatorDraw = false;
         }
-
-        let color = p.color(0,opacity);
-        p.fill(color);
-        p.rect(minX,minY,maxX,maxY,5,5,5,5);
- 
-        //Text
-        p.fill(255);
-        p.textStyle(NORMAL);
-        p.textFont(myFont);
-
-        p.text("Selected Cell Data",24,32)
-        p.text('Pos X: '+String(xX),24,56);
-        p.text('Pos Y: '+String(yY),24,72);
-
-        let tile = "Tile: "+selectedFile;
-        p.text(tile,24,88);
-
     };
   };
-  var myp5 = new p5(sketchOne, 'c1');

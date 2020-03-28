@@ -6,9 +6,9 @@ var Display =
         background('#233343');
 
         //Draw every cell of Loaded Map
-        for(let y = Navigator.minBoundsCurrent[1]; y < Navigator.maxBoundsCurrent[1]; y++)
+        for(let y = Navigator.minBoundsMap[1]; y < Navigator.maxBoundsMap[1]; y++)
         {
-            for(let x = Navigator.minBoundsCurrent[0]; x < Navigator.maxBoundsCurrent[0]; x++)
+            for(let x = Navigator.minBoundsMap[0]; x < Navigator.maxBoundsMap[0]; x++)
             {
                 //UI.adjustSliders();
                 this.drawVisuals(x,y);
@@ -40,8 +40,8 @@ var Display =
     drawVisuals: function(x,y)
     {
         //Set Drawing Coordinates for Canvas
-        let xDisplay = x - Navigator.minBoundsCurrent[0];
-        let yDisplay = y - Navigator.minBoundsCurrent[1];
+        let xDisplay = x - Navigator.minBoundsMap[0];
+        let yDisplay = y - Navigator.minBoundsMap[1];
        
         //Initialize Visuals
         let strokeThickness = 1;
