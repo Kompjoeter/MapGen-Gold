@@ -1,62 +1,60 @@
-//Canvas and Map
-const cellSize = 8;
+//CANVAS AND MAP VARIABLES
+    //Map Grid Cell Size
+    const cellSize = 8;
 
-//Window Size
-const innerWidth = window.innerWidth;
-const innerHeight = window.innerHeight;
+    //Canvas
+    var canvas;
 
-//Display Size
-const canvasWidth = (Math.ceil(innerWidth/8)-8)*8;
-const canvasHeight = (Math.ceil(innerHeight/8)-8)*8;
+    //Canvas/Display Size
+    const canvasWidth = (Math.ceil(window.innerWidth/cellSize)-cellSize)*cellSize;
+    const canvasHeight = (Math.ceil(window.innerHeight/cellSize)-cellSize)*cellSize;
 
-//Map Size
-var mapWidth = canvasWidth/8;
-var mapHeight = canvasHeight/8;
+    //Map Size
+    var mapWidth = canvasWidth/cellSize;
+    var mapHeight = canvasHeight/cellSize;
 
-//Current Map
-var mapLoaded;
+    var mapLoaded;
+    var mapSeed = Math.floor(Math.random()*100000);
 
-//Draw Elements
-sprites = [];
-colors = [];
+//UI VARIABLES
+    //UI Elements
+    var slidersHeightRange = [];
+    var textFieldsColor = [];
+    var textFieldSeed;
+    var sliderFallOff;
+    var sliderNoiseScale;
+    var buttonNewMap;
+    var radioVisuals = [];
+    var cellDataBox;
 
-//UI Elements
-var slidersHeightRange = [];
-var textFieldsColor = [];
-var textFieldSeed;
-var sliderFallOff;
-var sliderNoiseScale;
-var buttonNewMap;
-var radioVisuals = [];
-var cellDataBox;
+    //UI Element Values
+    var fallOff;
+    var noiseScale;
+    var gradient;
+    var prevColors = []
+    var prevHeightRanges = [];
+    var heightRanges = [];
+    var visualsType;
+    var outline;
 
-//-----UI Element Values
-var fallOff;
-var noiseScale;
-var gradient;
-var prevColors = []
-var prevHeightRanges = [];
-var heightRanges = [];
-var visualsType;
-var outline;
+//VISUALS VARIABLES
+    sprites = [];
+    colors = [];
 
-var mapSeed = Math.floor(Math.random()*100000);
-
-//Toggles - Temps
-var allowDraw = true;
-var storedTime = new Date();
+//TOGGLE VARIABLES
+    allowDraw = true;
 
 function preload()
 {
     //Pre-Load Sprite Images
-    sprites[0] = {image: loadImage('images/water.png'), name: "Deep Water"};
-    sprites[1] = {image: loadImage('images/water-shallow.png'), name: "Shallow Water"};
-    sprites[2] = {image: loadImage('images/sand.png'), name: "Beach/Sand"};
-    sprites[3] = {image: loadImage('images/grass-light.png'), name: "Short Grass"};
-    sprites[4] = {image: loadImage('images/grass-medium.png'), name: "Medium Grass"};
-    sprites[5] = {image: loadImage('images/grass-heavy.png'), name: "Tall Grass"};
-    sprites[6] = {image: loadImage('images/mountain.png'), name: "Mountains"};
-    sprites[7] = {image: loadImage('images/mountain-snow.png'), name: "Tall Mountains"};
+    sprites[0] = {image: loadImage('assets/images/water.png'), name: "Deep Water"};
+    sprites[1] = {image: loadImage('assets/images/water-shallow.png'), name: "Shallow Water"};
+    sprites[2] = {image: loadImage('assets/images/sand.png'), name: "Beach/Sand"};
+    sprites[3] = {image: loadImage('assets/images/grass-light.png'), name: "Short Grass"};
+    sprites[4] = {image: loadImage('assets/images/grass-medium.png'), name: "Medium Grass"};
+    sprites[5] = {image: loadImage('assets/images/grass-heavy.png'), name: "Tall Grass"};
+    sprites[6] = {image: loadImage('assets/images/mountain.png'), name: "Mountains"};
+    sprites[7] = {image: loadImage('assets/images/mountain-snow.png'), name: "Tall Mountains"};
 
     //Pre-Set Colors for Drawn Shapes
     colors[0] = '#4b5bab';
@@ -71,60 +69,74 @@ function preload()
 
 function setup() 
 {
-    //Create Canvas and Link it to HTML Element
-    var canvas = createCanvas(canvasWidth,canvasHeight);
+    //Initialize Canvas and Map
+    canvas = createCanvas(canvasWidth, canvasHeight);
     canvas.parent('sketch-holder');
+    canvas.addClass('canvas-one');
 
-    //Randomize Map Seed
-    noiseSeed(mapSeed);
-
-    
-    //Create UI (Sliders/Checkbox/Buttons)
     UI.initialize();
-
-    //Generate New Map of standard Size
     mapLoaded = new Map(mapWidth,mapHeight);
     
-    //Initialize Variables for Navigation and Display
-    Navigator.initialize();
 }
-
-function draw()
+  
+function draw() 
 {
-    if (allowDraw) 
+    let updated = UI.update();
+    if (updated)
     {
-        //Generate Map with Updated Variables       
-        mapLoaded.update();
-        
-        //Draw Map to Canvas
-        Display.show();
-
-        //Draw Cursor/Cell-Selector
-        stroke(255);
-        strokeWeight(1);
-        noFill();
-        square(Navigator.posCursor[0]*8,Navigator.posCursor[1]*8,8);
-
-        //Reset Draw-Map Toggle
-        allowDraw = false;
-    }
-
-    //Check for Nagitation (WASD) Input
-    let handlingInput = Navigator.handleInput();
-    //Check for UI Manipulation
-    let updatingUI = UI.update();
-    //If Navigation Input or UI Manipulation is true, allow Redrawing of Map
-    if (handlingInput || updatingUI)
-    {
+        for(y = 0; y < mapHeight; y++)
+        {
+            for(x = 0; x < mapWidth; x++)
+            {
+                mapLoaded.cells[x][y].update();
+            }
+        }
         allowDraw = true;
     }
+
+    if (allowDraw)
+    {
+        for(y = 0; y < mapHeight; y++)
+        {
+            for(x = 0; x < mapWidth; x++)
+            {
+               let cell = mapLoaded.cells[x][y];
+               if (checkCellRedraw(cell))
+               {
+                cell.show();
+               }
+            }
+        }
+        allowDraw = false;
+    }
 }
 
-function newMap()
+function checkCellRedraw(cell) {
+  if (cell.changePending) {
+    return true;
+  }
+  let i = getVisuals(cell);
+  if (heightRanges[i] != prevHeightRanges[i]) {
+    return true;
+  }
+}
+
+function getVisuals(cell)
 {
-    //Randomize Map Seed
-    noiseSeed(textFieldSeed.value());
-    mapLoaded = new Map(mapWidth,mapHeight);
-    Navigator.initialize();
-    allowDraw = true;
+    let visualsIndex;
+
+    for(i = 0; i < heightRanges.length; i++)
+    {
+        //Get Height Ranges (From every Height-Range-Slider Value)
+        let min = heightRanges[i] * i;
+        let max = heightRanges[i] * i+1;
+
+        //Get the right Visual-Index for Visual to Draw for Height-Range
+        if (cell.elevation >= min && cell.elevation < max)
+        {
+            //Draw either Pre-Loaded Images or Drawn Shapes, based on Visuals-Radio-Button Setting.
+            visualsIndex = i;   
+        }
+    }
+    return visualsIndex;
 }
