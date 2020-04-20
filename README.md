@@ -42,10 +42,10 @@ As of now I'm not accepting any pull-requests. This is a passion project of mine
 
 # Future Features (No promises!)
 Priority
-- Improved Map Navigation (Cell Select by Mouse)
-- Improved Drawing. (I have some efficiency issues which can probably be fixed)
+- Seperate Logic and UI properly!
 
 Semi-Priority
+- Improved Map Navigation (Cell Select by Mouse)
 - Responsive to different devices/screen types + Touch Screen Navigation.
 - Biomes (Different climates across the Map. Possibly with UI Manipulation)
 
