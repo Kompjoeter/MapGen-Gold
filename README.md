@@ -8,6 +8,8 @@ This project is still a work-in-progress and will probably be so for some time. 
 
 You can also check out my previous version https://github.com/RanDByyp/MapGen-Silver or live at https://randbyyp.github.io/MapGen-Silver/. The previous version won't be updated anymore, but I want to keep it live for comparison with this version.
 
+![Image of MapGen](https://github.com/RanDByyp/MapGen-Gold/blob/master/mapgen-gold.PNG)
+
 # Table of Contents
 
 - **index.html:** Sets up all relevant scripts and allows for the drawing of a canvas.
