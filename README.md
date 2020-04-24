@@ -57,6 +57,7 @@ Bonus
 - Tree/Flora Generation
 - Manual Adjusting of Map (Place your own individual towns/trees)
 - Height Brush (Increase or decrease heights by drawing on the canvas)
+- Option to use your own custom sprite-sheet
 
 # Credits
 This program was made by Joran de Boer AKA RanDByyp using the p5.js Library (https://p5js.org/) (which is not made by Joran).
