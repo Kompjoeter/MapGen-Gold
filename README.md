@@ -4,7 +4,7 @@
 
 An in-browser 2D Map Generator built with HTML, CSS, Javascript and the p5.js library. The Maps are generated using Perlin Noise and have a variety of sliders/buttons to alter the way it generates and a few options to choose from regarding the way it draws the Map onto the canvas.
 
-This project is still a work-in-progress and will probably be so for some time. I have a lot of ideas for functionality to add and generally I'm very excited and interested in procedural-generation/map-generation. Basically, I could work on this forever.
+This project is still a work-in-progress and will probably be so for some time. I have a lot of ideas for functionality to add and generally I'm very excited and interested in procedural-generation/map-generation.
 
 You can also check out my previous version https://github.com/RanDByyp/MapGen-Silver or live at https://randbyyp.github.io/MapGen-Silver/. The previous version won't be updated anymore, but I want to keep it live for comparison with this version.
 
